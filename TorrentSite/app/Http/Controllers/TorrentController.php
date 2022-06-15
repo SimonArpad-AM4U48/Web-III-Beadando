@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TorrentRequest;
 use App\Models\Category;
 use App\Models\Torrent;
 use App\Models\User;
@@ -33,17 +34,11 @@ class TorrentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\TorrentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TorrentRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:10|max:100',
-            'description' => 'required',
-            'category_id' => 'required|exists:categories,id',
-        ]);
-
         //todo ennek rohadtul nem így kell működnie
         $user = User::first();
 
@@ -79,11 +74,11 @@ class TorrentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\TorrentRequest  $request
      * @param  \App\Models\Torrent  $torrent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Torrent $torrent)
+    public function update(TorrentRequest $request, Torrent $torrent)
     {
         //
     }
