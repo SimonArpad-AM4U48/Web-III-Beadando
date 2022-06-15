@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use View;
+use App\View\Composers\CategoryViewComposer;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrapFive();
+        View::composer('*', CategoryViewComposer::class);
     }
 }
