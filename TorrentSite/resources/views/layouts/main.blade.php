@@ -14,7 +14,10 @@
         <style>
             body {
                 padding-top: 4.5rem;
-                padding-bottom: 5rem;
+                padding-bottom: 6rem;
+            }
+            footer {
+                background-color: white;
             }
         </style>
         @stack('style')
