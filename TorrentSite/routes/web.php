@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\TorrentController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,7 @@ Route::middleware(['auth'])->group( function () {
 });
 
 Route::get('/torrent/{torrent}', [TorrentController::class, 'show'])->name('torrent.details');
+Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 require __DIR__.'/auth.php';
