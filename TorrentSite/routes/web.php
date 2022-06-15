@@ -23,3 +23,5 @@ Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.creat
     Route::post('/upload',[TorrentController::class, 'store']);
 
 Route::get('/torrent/{torrent}', [TorrentController::class, 'show'])->name('torrent.details');
+
+require __DIR__.'/auth.php';
