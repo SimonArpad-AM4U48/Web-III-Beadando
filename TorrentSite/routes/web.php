@@ -19,8 +19,10 @@ use App\Http\Controllers\TorrentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/download', [DownloadController::class, 'index'])->name('download');
-Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
+Route::middleware(['auth'])->group( function () {
+    Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
     Route::post('/upload',[TorrentController::class, 'store']);
+});
 
 Route::get('/torrent/{torrent}', [TorrentController::class, 'show'])->name('torrent.details');
 

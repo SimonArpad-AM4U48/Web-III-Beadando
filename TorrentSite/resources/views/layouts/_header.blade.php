@@ -19,17 +19,43 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('torrent.create')}}">Upload</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Upload</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('torrent.create')}}">Upload</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('torrent.create')}}">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Upload</a>
+                    </li>
+                @endauth
             </ul>
-            <div>
-                <a class="btn btn-outline-success" href="#">{{__(('Sign in'))}}</a>
-                <a class="btn btn-outline-success" href="#">{{__(('Sign up'))}}</a>
-            </div>
+            @auth
+                <div class="btn-group dropstart">
+                    <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">{{ __('Profile') }}</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="dropdown-item" type="submit">
+                                    {{ __('Sign out') }}
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                    </div>
+            @else
+                <div>
+                    <a class="btn btn-outline-success" href="{{route('login')}}">{{__(('Sign in'))}}</a>
+                    <a class="btn btn-outline-success" href="{{route('register')}}">{{__(('Sign up'))}}</a>
+                </div>
+            @endauth
         </div>
     </div>
 </header>
