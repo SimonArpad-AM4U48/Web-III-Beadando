@@ -14,7 +14,7 @@
         <style>
             body {
                 padding-top: 4.5rem;
-                padding-bottom: 6rem;
+                padding-bottom: 7rem;
             }
             footer {
                 background-color: white;
