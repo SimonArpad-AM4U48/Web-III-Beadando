@@ -25,6 +25,7 @@
 
         @include('layouts._header')
         <main class="container">
+            @include('layouts._alerts')
             @yield('content')
         </main>
         @include('layouts._footer')
