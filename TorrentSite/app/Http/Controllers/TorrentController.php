@@ -7,6 +7,7 @@ use App\Http\Requests\TorrentRequest;
 use App\Models\Category;
 use App\Models\Torrent;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class TorrentController extends Controller
@@ -90,5 +91,23 @@ class TorrentController extends Controller
     public function destroy(Torrent $torrent)
     {
         //
+    }
+
+    public function comment(Torrent $torrent, Request $request)
+    {
+        $request->validate([
+            'comment' => 'required|min:10',
+        ]);
+
+        $comment = new Comment;
+        $comment->message = $request->comment;
+        $comment->user()->associate($request->user());
+
+        $torrent->comments()->save($comment);
+
+        $url = route('torrent.details', $torrent) . "#comment-{$comment->id}";
+
+        return redirect($url)
+            ->with('success', __('Comment saved successfully'));
     }
 }

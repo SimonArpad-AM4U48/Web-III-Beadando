@@ -24,6 +24,7 @@ Route::get('/download', [DownloadController::class, 'index'])->name('download');
 Route::middleware(['auth'])->group( function () {
     Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
     Route::post('/upload',[TorrentController::class, 'store']);
+    Route::post('/torrent/{torrent}/comment', [TorrentController::class, 'comment'])->name('torrent.comment');
 });
 
 Route::get('/torrent/{torrent}', [TorrentController::class, 'show'])->name('torrent.details');
