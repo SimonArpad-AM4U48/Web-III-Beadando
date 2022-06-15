@@ -39,10 +39,7 @@ class TorrentController extends Controller
      */
     public function store(TorrentRequest $request)
     {
-        //todo ennek rohadtul nem így kell működnie
-        $user = User::first();
-
-        $torrent = $user->torrents()->create($request->except('_token'));
+        $torrent = Auth::user()->torrents()->create($request->except('_token'));
 
         return redirect()
             ->route('torrent.details', $torrent)
