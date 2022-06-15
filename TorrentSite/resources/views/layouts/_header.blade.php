@@ -14,7 +14,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             @foreach($categories as $category)
-                                <li><a class="dropdown-item" href="#">{{$category->title}}</a></li>
+                                <li><a class="dropdown-item" href="{{route('category.show', $category)}}">{{$category->title}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -24,9 +24,6 @@
                         <a class="nav-link active" aria-current="page" href="{{route('torrent.create')}}">Upload</a>
                     </li>
                 @else
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('torrent.create')}}">Upload</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">Upload</a>
                     </li>
