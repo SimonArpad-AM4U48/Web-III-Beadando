@@ -18,7 +18,7 @@ class TorrentFactory extends Factory
     {
         return [
             'category_id' => $this->faker->biasedNumberBetween(1, 5),
-            'uploader_id' => $this->faker->biasedNumberBetween(1,50),
+            'user_id' => $this->faker->biasedNumberBetween(1,50),
             'title' => $this->faker->text(100),
             'description' => $this->faker->text(),
         ];
