@@ -12,19 +12,25 @@
                 </form>
             </h5>
         @endauth
-        @foreach($torrent->comments as $comment)
-            <div class="card mb-3" id="comment-{{$comment->id}}">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a class="link" href="{{ route('profile.show', $comment->user) }}">
-                            <img class="rounded-circle me-2" width="25" src="{{ $comment->user->avatar }}" alt="{{ $comment->user->name }}">
-                            {{ $comment->user->name }}
-                        </a>
-                        | {{ $comment->created_at->diffForHumans() }}
-                    </h5>
-                    <p class="card-text">{{ $comment->message }}</p>
+            @if ($torrent->comments->isNotEmpty())
+                @foreach($torrent->comments as $comment)
+                    <div class="card mb-3" id="comment-{{$comment->id}}">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="link" href="{{ route('profile.show', $comment->user) }}">
+                                    <img class="rounded-circle me-2" width="25" src="{{ $comment->user->avatar }}" alt="{{ $comment->user->name }}">
+                                    {{ $comment->user->name }}
+                                </a>
+                                | {{ $comment->created_at->diffForHumans() }}
+                            </h5>
+                            <p class="card-text">{{ $comment->message }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="alert alert-warning">
+                    {{ __('No comment to show') }}
                 </div>
-            </div>
-        @endforeach
+            @endif
     </div>
 </div>
