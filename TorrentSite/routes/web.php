@@ -19,3 +19,5 @@ use App\Http\Controllers\TorrentController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
     Route::post('/upload',[TorrentController::class, 'store']);
+
+Route::get('/torrent/{torrent}', [TorrentController::class, 'show'])->name('torrent.details');

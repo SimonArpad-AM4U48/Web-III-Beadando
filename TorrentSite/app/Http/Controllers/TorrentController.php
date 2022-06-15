@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Torrent;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TorrentController extends Controller
@@ -43,7 +44,14 @@ class TorrentController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        dd($request->all());
+        //todo ennek rohadtul nem így kell működnie
+        $user = User::first();
+
+        $torrent = $user->torrents()->create($request->except('_token'));
+
+        return redirect()
+            ->route('torrent.details', $torrent)
+            ->with('success', __('Torrent uploaded successfully'));
     }
 
     /**
@@ -54,7 +62,7 @@ class TorrentController extends Controller
      */
     public function show(Torrent $torrent)
     {
-        //
+        return view('torrent.show')->with(['torrent' => $torrent]);
     }
 
     /**
