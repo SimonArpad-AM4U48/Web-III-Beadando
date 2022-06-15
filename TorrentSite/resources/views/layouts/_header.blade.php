@@ -32,6 +32,7 @@
             @auth
                 <div class="btn-group dropstart">
                     <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle me-2" width="24px" src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}">
                         {{ Auth::user()->name }}
                     </button>
                     <ul class="dropdown-menu">
