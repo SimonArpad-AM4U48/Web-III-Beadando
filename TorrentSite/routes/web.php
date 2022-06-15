@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TorrentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
+    Route::post('/upload',[TorrentController::class, 'store']);
