@@ -23,7 +23,7 @@
         </tr>
     @empty
         <div class="alert alert-warning">
-            {{ __('No posts to show') }}
+            {{ __('No torrent to show') }}
         </div>
     @endforelse
 </table>
