@@ -45,4 +45,9 @@ class User extends Authenticatable
     public function torrents() {
         return $this->hasMany(Torrent::class);
     }
+
+    public function getAvatarAttribute() {
+        $gravatar = md5($this->email);
+        return "https://www.gravatar.com/avatar/{$gravatar}?s=100&d=retro";
+    }
 }
