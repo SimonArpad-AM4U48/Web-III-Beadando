@@ -1,11 +1,13 @@
 <table class="table table-dark table-striped">
-    <tr>
-        <th>{{__(('Category'))}}</th>
-        <th>{{__(('Title'))}}</th>
-        <th>{{__(('Created at'))}}</th>
-        <th>{{__(('Uploader'))}}</th>
-    </tr>
-    @foreach($torrents as $torrent)
+    @if ($torrents->isNotEmpty())
+        <tr>
+            <th>{{__(('Category'))}}</th>
+            <th>{{__(('Title'))}}</th>
+            <th>{{__(('Created at'))}}</th>
+            <th>{{__(('Uploader'))}}</th>
+        </tr>
+    @endif
+    @forelse($torrents as $torrent)
         <tr>
             <td class="col-xl-1 col-lg-1 col-mg-3"><a class="link" href="{{route('category.show', $torrent->category)}}"><p>{{$torrent->category->title}}</p></a></td>
             <td><a class="link" href="{{route('torrent.details', $torrent)}}"><p>{{$torrent->title}}</p></a></td>
@@ -19,6 +21,10 @@
                 </p>
             </td>
         </tr>
-    @endforeach
+    @empty
+        <div class="alert alert-warning">
+            {{ __('No posts to show') }}
+        </div>
+    @endforelse
 </table>
 {{$torrents->links()}}
