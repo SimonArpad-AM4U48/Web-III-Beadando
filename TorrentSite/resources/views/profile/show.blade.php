@@ -14,7 +14,7 @@
     @section('content')
         <div>
             <div class="mb-2">
-                <img class="rounded-circle me-2" width="50px" src="{{$user->avatar}}" alt="{{$user->name}}">{{$user->name}}
+                <img class="rounded-circle me-2" width="50px" src="{{$user->avatar}}" alt="{{$user->name}}"><b>{{$user->name}}</b>
             </div>
             <div>
                 @include('torrent._table')
