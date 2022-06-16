@@ -6,7 +6,7 @@
                 <form action="{{ route('torrent.comment', $torrent) }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input name="comment" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input name="comment" class="form-control" placeholder="{{__(('Send comment'))}}" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-success" type="submit">{{__(('Comment'))}}</button>
                     </div>
                 </form>
