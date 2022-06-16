@@ -21,6 +21,7 @@ class TorrentFactory extends Factory
             'user_id' => $this->faker->biasedNumberBetween(1,50),
             'title' => $this->faker->text(100),
             'description' => $this->faker->text(),
+            'torrent' => "uploads/torrents/_default.md"
         ];
     }
 }
