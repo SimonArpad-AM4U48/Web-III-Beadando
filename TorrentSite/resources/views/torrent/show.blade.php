@@ -29,6 +29,9 @@
         <div>
             {{ $torrent->description }}
         </div>
+        <div class="mt-5 d-grid gap-2">
+            <a class="btn btn-primary btn-success" href="{{route('downloadTorrent', $torrent)}}">{{__(('Download'))}}</a>
+        </div>
         @include('torrent._comments')
     @endsection
     @push('sripts')@endpush

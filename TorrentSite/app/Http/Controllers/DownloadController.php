@@ -11,4 +11,8 @@ class DownloadController extends Controller
         $torrents = Torrent::orderBy('created_at', 'desc')->paginate(50);
         return view('download')->with(['torrents' => $torrents]);
     }
+
+    public function download(Torrent $torrent) {
+        return response()->download(storage_path("app/{$torrent->torrent}"));
+    }
 }

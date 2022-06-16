@@ -21,6 +21,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/download', [DownloadController::class, 'index'])->name('download');
+Route::get('/downloadTorrent{torrent}', [DownloadController::class, 'download'])->name('downloadTorrent');
 Route::middleware(['auth'])->group( function () {
     Route::get('/upload', [TorrentController::class, 'create'])->name('torrent.create');
     Route::post('/upload',[TorrentController::class, 'store']);
