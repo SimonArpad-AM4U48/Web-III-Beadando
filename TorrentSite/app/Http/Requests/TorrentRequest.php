@@ -17,6 +17,7 @@ class TorrentRequest extends FormRequest
             'title' => 'required|min:10|max:100',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
+            'torrent_file' => 'required|file'
         ];
     }
 }

@@ -43,6 +43,9 @@ class TorrentController extends Controller
     {
         $torrent = Auth::user()->torrents()->create($request->except('_token'));
 
+        $torrent->torrent = $this->uploadFile($request);
+        $torrent->save();
+
         return redirect()
             ->route('torrent.details', $torrent)
             ->with('success', __('Torrent uploaded successfully'));
@@ -109,5 +112,12 @@ class TorrentController extends Controller
 
         return redirect($url)
             ->with('success', __('Comment saved successfully'));
+    }
+
+    public function uploadFile(Request $request) {
+        $file = $request->file('torrent_file');
+
+        $torrent = $file->store("uploads/torrents");
+        return $torrent;
     }
 }
